@@ -1,0 +1,16 @@
+{% extends "layoutOff.html" %}
+
+{% block title %}
+    Try Again!
+{% endblock %}
+
+{% block main %}
+<h1 class="mx-auto" id="contact_brillo" style="text-align: center; margin-top: 2rem;">{{msgAddContactError}}</h1>
+    <form action="/addContactError" method="post">
+        <div class="container_forms">
+            <button type="submit" id="contact_brillo1" class="info_contact_me" style="margin-top: 2rem;">
+                Go back <i class="far fa-paper-plane info_button"></i>
+            </button>
+        </div>
+    </form>
+{% endblock %}

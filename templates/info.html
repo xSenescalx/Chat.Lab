@@ -1,0 +1,185 @@
+{% extends "layoutOff.html" %}
+
+{% block title %}
+    Info
+{% endblock %}
+
+{% block main %}
+<section id="main">
+    <div class="contenedor_info">
+        <div class="row grid_columns">
+            <div class="col-1">
+                <div><a href="https://www.instagram.com/"><i class="fab fa-instagram media_icons"></i></a></div>
+                <div><a href="https://github.com/"><i class="fab fa-github media_icons"></i></a></div>
+                <div><a href="https://www.linkedin.com/feed/"><i class="fab fa-linkedin-in media_icons"></i></a></div>
+            </div>
+            <div class="col-2">
+                <h1 class="info_title "><span id="brillo" class="">Hi, I'm </span><span id="contact_brillo" class="" >D</span><span id="roto" class="">ani</span></h1>
+                <h2 class="info_subtitle">Full Stack Developer</h2>
+                <p class="into_text ">Junior level experience in web design and development knowledge, producing quality work. Always looking to learn and improve myself.</p>
+                <p class="into_text ">I proudly present to you Chat.Lab, my final project for CS50. I hope you like it as much as I did making it!</p>
+                <a href="#contact_me" id="contact_brillo1" class="info_contact_me">
+                Contact Me <i class="far fa-paper-plane info_button"></i>
+                </a>
+            </div>
+            <div class="col-3">
+                
+                <img class="blop" src="static\blop.jpg" alt="" width="80%" style="min-width: 150px;">
+                
+            </div>
+            <div class="col-4">
+                
+            </div>
+            <div class="col-5">
+                
+            </div>
+            <div class="col-6">
+                <a href="#personal_about_me" id="contact_brillo2" class="scroll_down">
+                    <i class="fas fa-angle-double-down"></i> Scroll Down <i class="fas fa-angle-double-down"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="personal_about_me">
+    <div class="contenedor_info">
+        <div class="fondo_trasparente_about_me" id="brillo_about_me">
+            <div class="grid_columns_about_me">
+                <div class="col-1_about_me">
+                    <h1 class="info_title_about_me" ><span class="" id="brillo1">Ab</span><span class="" id="brillo2">ou</span><span class="" id="contact_brillo3">t</span><span class="" id="brillo3"> Me</h1>
+                    <p class="into_text_about_me " style="color: grey;">My introduction</p>
+                </div>
+                <div class="col-2_about_me">
+                    
+                </div>
+                <div class="col-3_about_me">
+                    <img class="about_me_foto" src="static\aboutme.jpeg" alt="" width="85%" style="min-width: 150px;">
+                </div>
+                <div class="col-4_about_me">
+                    <p class="into_text_about_me">Web developer, passionate about the world of programming and technology. Currently studying computer programming at the University of San Martin (Buenos Aires - Argentina).</p>
+                    <p class="into_text_about_me">I've been developing web applications for two years and three years as a programmer, since then I haven't stopped programming.</p>
+                    <p class="into_text_about_me">I started learning everything on my own, doing online courses such as: CS50 from Harvard University and over time my desire to improve was getting bigger and bigger and I enrolled in the university with the goal of working in a more professional and orderly manner.</p>
+                    <p class="into_text_about_me">My current goal is to get a job as a front-end or back-end web developer to be able to surround myself with professional programmers and learn from them the best practices of programming.</p>
+                    <a download="" href="static\pdf\Daniel Roffo - CV.pdf" id="contact_brillo4" class="info_contact_me">
+                        Download CV<i class="fas fa-download" style="margin-left: .5rem;" ></i>
+                    </a>
+                    <a href="#contact_me" id="contact_brillo5" class="scroll_down_about_me">
+                        <i class="fas fa-angle-double-down"></i> Scroll Down <i class="fas fa-angle-double-down"></i>
+                    </a>
+                </div>
+                <div class="col-5_about_me">
+                    
+                </div>
+                <div class="col-6_about_me">
+                    
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+</section>
+<section id="contact_me">
+    <div class="container_contact_me">
+        <div style="zoom: 80%;">
+            <h1 class="h1_contact_me letras_brillantes" style="color: #fff;">Contact Me</h1>
+            <p class="p_contact_me">Contact Me</p>
+            <div class="container_completar">
+                <div class="col-1_contact_me">
+                    
+                    <h2 style="color: #ffffff; font-size: 1.2rem;"><i class="fas fa-phone-alt"></i> Call Me</h2>
+                    <p style="color: #ffffff; font-size: 1rem;">**-****-****</p>
+                    
+                    <h2 style="color: #ffffff; font-size: 1.2rem;"><i class="far fa-envelope-open"></i> Email</h2>
+                    <p style="color: #ffffff; font-size: 1rem;">daniroffo125@gmail.com</p>
+                    
+                    <h2 style="color: #ffffff; font-size: 1.2rem;"><i class="fas fa-map-marker-alt"></i> Location</h2>
+                    <p style="color: #ffffff; font-size: 1rem;">Argentina - Buenos Aires, Capital Federal</p>
+                    
+                    <h2 style="color: #ffffff; font-size: 1.2rem;"><i class="far fa-user"></i> Web developer</h2>
+                    <p style="color: #ffffff; font-size: 1rem;">Daniel J. Roffo</p>
+                    <div class="scroll_up_info">
+                        <a href="#main" class="scroll_up_info chatlab_brillo_roto">
+                            <i class="fas fa-angle-double-up"></i> Go back <i class="fas fa-angle-double-up"></i>
+                        </a>
+                    </div>
+                    
+                </div>
+                <div class="col-2_contact_me">
+                    <form action="/info" method="post">
+                        <div class="separador">
+                            <label style="color: #ffffff;" for="floatingUsername">Name</label>
+                            <input type="text" class="text_contact_me"  name="name" id="floatingnName" required="true"/>
+                        </div>
+                        <div class="separador">
+                            <label style="color: #ffffff;" for="floatingEmail"> Email</label>
+                            <input type="email" class="text_contact_me" name="email" id="floatingEmail" required="true"/>
+                        </div>
+                        <div class="separador">
+                            <label style="color: #ffffff;" for="floatingProyect">Proyect</label>
+                            <input type="text" class="text_contact_me"  name="proyect" id="floatingnProyect" required="true"/>
+                        </div>
+                        <div class="separador">
+                            <label style="color: #ffffff;" for="floatingnMessage">Message</label>
+                            <textarea name="message" id="" cols="" rows="5" class="text_contact_me"></textarea>
+                            
+                        </div>
+                        <button type="submit" class="info_contact_me chatlab_brillo_roto" style="margin-left:1rem; margin-top: 4rem;">
+                            Send Message <i class="far fa-paper-plane info_button"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>    
+    </div>
+
+</section>
+<script>
+
+    function chatlab_brillo_roto() {
+    var element_info = document.getElementById("contact_brillo");
+    element_info.classList.toggle("chatlab_brillo_roto");
+    
+    var element_info = document.getElementById("contact_brillo1");
+    element_info.classList.toggle("chatlab_brillo_roto");
+
+    var element_info = document.getElementById("contact_brillo2");
+    element_info.classList.toggle("chatlab_brillo_roto");
+
+    var element_info = document.getElementById("contact_brillo3");
+    element_info.classList.toggle("chatlab_brillo_roto");
+
+    var element_info = document.getElementById("contact_brillo4");
+    element_info.classList.toggle("chatlab_brillo_roto");
+
+    var element_info = document.getElementById("contact_brillo5");
+    element_info.classList.toggle("chatlab_brillo_roto");
+
+    }
+    
+    function roto() {
+
+        var element_roto = document.getElementById("roto");
+        element_roto.classList.toggle("letra_apagada");
+
+    }
+    function brillo() {
+        
+        var element_brillo = document.getElementById("brillo");
+        element_brillo.classList.toggle("letras_brillantes");
+
+        var element_brillo = document.getElementById("brillo1");
+        element_brillo.classList.toggle("letras_brillantes");
+
+        var element_brillo = document.getElementById("brillo2");
+        element_brillo.classList.toggle("letras_brillantes");
+
+        var element_brillo = document.getElementById("brillo3");
+        element_brillo.classList.toggle("letras_brillantes");
+        
+        var element_brillo = document.getElementById("brillo_about_me");
+        element_brillo.classList.toggle("fondo_trasparente_about_me_darkmode");
+    }
+
+</script>
+{% endblock %}

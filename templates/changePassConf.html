@@ -1,0 +1,23 @@
+{% extends "layoutOff.html" %}
+
+{% block title %}
+    Register
+{% endblock %}
+
+{% block main %}
+
+<h1 class="mx-auto" id="contact_brillo" style="text-align: center; margin-top: 2rem;">Check your Email!</h1>
+    <form action="/changePassConf" method="post">
+        <div class="container_forms">
+            <div id="color_label1" class="form-floating mb-3">
+                <input  style="background-color: rgba(255, 255, 255, 0.219);" type="text"  class="form-control" name="otp" id="floatingUsername" placeholder="Confirmation Code" required="true"/>
+                <label for="floatingUsername">Confirmation Code</label>
+            </div>
+
+            <button type="submit" id="contact_brillo1" class="info_contact_me" style="margin-top: 2rem;">
+                Send! <i class="far fa-paper-plane info_button"></i>
+            </button>
+        </div>
+    </form>
+    
+{% endblock %}

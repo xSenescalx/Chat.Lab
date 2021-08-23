@@ -1,0 +1,16 @@
+account
+-pasar todo lo de profile a account
+-agregar account name (sin permitir cambios) arriba del username change
+-completar security details
+-cambiar el change email por change profile pic
+
+
+profile
+-mostrar username/imagen/
+-agregar contador de cant de amigos/grupos/comentarios/likes_comentarios 
+
+
+
+
+
+NO SE GUARDA EL NOMBRE EN LA BASE DE DATOS

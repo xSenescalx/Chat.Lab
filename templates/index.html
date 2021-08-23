@@ -1,0 +1,19 @@
+{% extends "layoutOff.html" %}
+
+{% block title %}
+    Index
+{% endblock %}
+
+{% block main %}
+<div class="chatlab">
+    <p id="chatlab_p" class="chatlab_no_fx"><span class="texto_responsive" data-app_name_dividido="Chat.Lab" data-app_name="Chat Lab"></span></p>  
+</div>
+<script>
+    function chatlab_brillo_roto() {
+    var element_index_p = document.getElementById("chatlab_p");
+    element_index_p.classList.toggle("chatlab_brillo_roto");
+    }
+
+
+</script>
+{% endblock %}

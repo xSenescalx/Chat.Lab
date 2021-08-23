@@ -1,0 +1,29 @@
+{% extends "layoutOff.html" %}
+
+{% block title %}
+    Try Again!
+{% endblock %}
+
+{% block main %}
+<h1 class="mx-auto" id="contact_brillo" style="text-align: center; margin-top: 2rem;">{{msgRegistrationError}}</h1>
+    <form action="/registrationError" method="post">
+        <div class="container_forms">
+            <button type="submit" id="contact_brillo1" class="info_contact_me" style="margin-top: 2rem;">
+                Go back <i class="far fa-paper-plane info_button"></i>
+            </button>
+        </div>
+    </form>
+
+    <script>
+
+        function chatlab_brillo_roto() {
+        var element_info = document.getElementById("contact_brillo");
+        element_info.classList.toggle("chatlab_brillo_roto");
+
+        var element_info = document.getElementById("contact_brillo1");
+        element_info.classList.toggle("chatlab_brillo_roto");
+
+        }
+
+    </script>
+{% endblock %}

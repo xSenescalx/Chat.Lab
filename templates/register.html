@@ -1,0 +1,68 @@
+{% extends "layoutOff.html" %}
+
+{% block title %}
+    Register
+{% endblock %}
+
+{% block main %}
+        
+    </form>
+
+    <h1 class="mx-auto" id="contact_brillo" style="text-align: center; margin-top: 2rem;">Register!</h1>
+    <form action="/register" method="post">
+        <div class="container_forms">
+            <div id="color_label1" class="form-floating mb-3">
+                <input  style="background-color: rgba(255, 255, 255, 0.219);" type="email"  class="form-control" name="email"  placeholder="name@example.com" required="true"/>
+                <label for="floatingUsername">Email address</label>
+            </div>
+            <div id="color_label2" class="form-floating mb-3">
+                <input  style="background-color: rgba(255, 255, 255, 0.219);" type="text"  class="form-control" name="account"  placeholder="username" required="true"/>
+                <label for="floatingUsername">Account</label>
+            </div>
+            <div id="color_label3" class="form-floating mb-3">
+                <input style="background-color: rgba(255, 255, 255, 0.219);" type="password" class="form-control" name="password" id="floatingPassword" placeholder="password" minlength="8">
+                <label  for="floatingPassword">Password</label>
+            </div>
+            <div id="color_label4" class="form-floating">
+                <input style="background-color: rgba(255, 255, 255, 0.219);" type="password" class="form-control" name="confirmation" id="floatingPassword" placeholder="password confirmation" minlength="8">
+                <label  for="floatingPassword">Password</label>
+            </div>
+
+            <button type="submit" id="contact_brillo1" class="info_contact_me" style="margin-top: 2rem;">
+                Register <i class="far fa-paper-plane info_button"></i>
+            </button>
+        </div>
+    </form>
+    <div class="centradoBarraNum">
+        <div class="position-relative m-4">
+            <div class="progress" style="height: 1px;">
+            <div class="progress-bar" role="progressbar" style="width: 50%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+            </div >
+            <button type="button" class="position-absolute top-0 start-0 translate-middle btn btn-sm btn-primary rounded-pill" style="width: 2rem; height:2rem; background-color: rgb(85, 83, 216);">1</button>
+            <button type="button" class="position-absolute top-0 start-50 translate-middle btn btn-sm btn-secondary rounded-pill" style="width: 2rem; height:2rem;">2</button>
+            <button type="button" class="position-absolute top-0 start-100 translate-middle btn btn-sm btn-secondary rounded-pill" style="width: 2rem; height:2rem;">3</button>
+        </div>
+    </div>
+
+    <script>
+
+        function chatlab_brillo_roto() {
+        var element_info = document.getElementById("contact_brillo");
+        element_info.classList.toggle("chatlab_brillo_roto");
+
+        var element_info = document.getElementById("contact_brillo1");
+        element_info.classList.toggle("chatlab_brillo_roto");
+
+        }
+
+        function color_label() {
+        var element_info = document.getElementById("color_label1");
+        element_info.classList.toggle("color_label");
+
+        var element_info = document.getElementById("color_label2");
+        element_info.classList.toggle("color_label");
+    }
+
+    </script>
+    
+{% endblock %}

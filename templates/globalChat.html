@@ -1,0 +1,101 @@
+{% extends "layoutOff.html" %}
+
+{% block title %}
+    Global Chat!
+{% endblock %}
+
+{% block main %}
+
+    <head><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css" /></head>
+    <nav class="navbar is-fixed-bottom" role="navigation" aria-label="main navigation">
+        <div class="container">
+            <div class="navbar-item is-expanded">
+                <input id="chat_text" class="input" type="text">
+                <a id="chat_btn" class="button is-info">
+                    Send
+                </a>    
+            </div>
+        </div>
+    </nav>
+
+    <div id="content" class="container" style="overflow-y:auto; margin-bottom: 100px;">
+
+
+    <div class="modal is-active">
+        <div class="modal-background"></div>
+        <div class="modal-content">
+                <a id="start_chat" class="button is-info">
+                    Start Chatting!
+                </a>
+        </div>
+      </div>
+      
+    <script>
+        
+        $(function() {$
+
+            let username;
+            let enter_chat;
+
+            
+            
+            $('#start_chat').on('click', function() {
+
+                let enter_chat = '{{session.user_name}} has enter the chat!'
+
+                username = ('{{session.user_name}}');
+                $('.modal').removeClass('is-active');
+                
+                $.post('/global_message', {'username' : '' , 'message' : enter_chat});
+
+            });
+
+            $('#chat_btn').on('click', function() {
+
+               
+
+                let message = $('#chat_text').val();
+
+                $.post('/global_message', {'username' : username, 'message' : message}, function() {
+                    $('#chat_text').val('');
+
+                });
+            });
+
+            // Enable pusher logging - don't include this in production
+            Pusher.logToConsole = true;
+
+            var pusher = new Pusher('eae3df9de1df6d4b8c82', {
+                cluster: 'us2',
+                encrypted: true
+            });
+
+            var channel = pusher.subscribe('globalChat-channel');
+            channel.bind('new-message', function(data) {
+                
+                let name = data.username;
+                let message = data.message
+
+                let message_template = `<article class="media">
+                                            <div class="media-content">
+                                                <div class="content">
+                                                <p>
+                                                    <strong>${name}</strong>
+                                                    <br> ${message}
+                                                </p>
+                                                </div>
+                                            </div>
+                                        </article>`;
+                $('#content').append(message_template);
+
+            });
+
+
+            
+        });
+
+        
+
+    </script>
+    
+{% endblock %}

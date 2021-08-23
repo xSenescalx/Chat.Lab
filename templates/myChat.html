@@ -1,0 +1,282 @@
+{% extends "layoutOff.html" %}
+
+{% block title %}
+    My Chat
+{% endblock %}
+
+{% block main %}
+
+<head><link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"></head>
+
+<div class="messaging">
+    <div class="inbox_msg">
+        <div class="inbox_people">
+            <div class="headind_srch">
+            <div class="recent_heading">
+                <h4 style="color: rgb(85, 83, 216);">Contacts</h4>
+            </div>
+            <div class="srch_bar">
+                <div class="stylish-input-group">
+                <input id="search-id" onkeyup="mySearch()" type="text" class="search-bar"  placeholder="Search" >
+                </div>
+            </div>
+            </div>
+            <div class="inbox_chat scroll" style="overflow-x: hidden;">
+              <ul id="myUL"> 
+                {% for info in contact_info %}
+                  <div class= "cuadrado_contact">
+                    {% for usercontact in usercontacts %}
+                    {% if usercontact[2] == active_account %}
+                    {% if usercontact[3] == info[2] %}
+                    <li>
+                      <div id="{{info[2]}}" class="chat_list {{info[0]}}" name="{{usercontact[1]}}">
+                      
+                          <div class="chat_people">
+                              <div class="row">  
+                                  <div class="col-sm-2" style="width: 60px;">   
+                                      <div class="chat_img"> <img style="height: 45px; width: 45px;" class="rounded-circle" src=/static/profile_pics/{{info[1]}}> </div>
+                                  </div> 
+                                  <div class="col-sm-10">    
+                                      <div class="chat_ib">
+                                                                                
+                                        {% for message_data in messages_data %}
+                                        {% if usercontact[1] == message_data[1] %}
+                                          <h6>{{info[0]}}<span id="h{{usercontact[1]}}" class="chat_date text-muted">{{message_data[4]}}</span> </h6>
+                                          <p id="p{{usercontact[1]}}">{{message_data[2]}}</p>
+                                        {% endif %}
+                                        {% endfor %}  
+                                      </div>   
+                                  </div>    
+                              </div>     
+                          </div>
+                      </div>
+                    </li>
+                    {% endif %}
+                    {% endif %}
+                    {% endfor %}  
+                  </div>
+                  
+                    <div class="row"  style="overflow-x: hidden" >
+                      <div class="col-sm-2" style="width: 60px;"></div>
+                        <div class="col-sm-10"><hr class="hr_chat" style="float: right;"></div> 
+                    </div>
+                      
+                {% endfor %}
+              </ul>  
+            </div>
+        </div>
+      <div class="mesgs">
+        <div id="content" class="msg_history">
+            
+         
+
+        </div>
+        <div class="type_msg">
+          <div class="input_msg_write">
+            <input id="chat_text" type="text" class="write_msg" placeholder="Type a message" disabled="disabled"/>
+            <button id="chat_btn" style="background-color: rgb(85, 83, 216);" class="msg_send_btn" type="button"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+        
+
+    </div>
+
+      
+    <script>
+
+          Pusher.logToConsole = true;
+
+          var pusher = new Pusher('eae3df9de1df6d4b8c82', {
+              cluster: 'us2',
+              encrypted: true
+          });
+
+          var chat_list_div = $(".chat_list");
+          var active_account = '{{active_account}}';
+          var cc = $('.clicked_active_chat').attr('id');
+         
+          
+          var dt = new Date();
+          var time = ("0" + dt.getDate()).slice(-2) + "/" + ("0" + (dt.getMonth() + 1)).slice(-2) + " || " + ("0" + dt.getHours()).slice(-2) + ":" + ("0" + dt.getMinutes()).slice(-2);
+         
+          
+          var channel;
+          var message_user;
+          var message_contact;
+          
+          for(i = 0; i < '{{usercontacts}}'.length; i++){
+            channel = pusher.subscribe('chat-channel-' + i);
+          }
+          
+
+          chat_list_div.click(function() {
+            chat_list_div.removeClass("clicked_active_chat");
+            $(this).addClass("clicked_active_chat");
+            var conversation_id = (this).getAttribute("name");
+            
+            var contact_clicked = (this).getAttribute("id");
+
+            channel = pusher.subscribe('chat-channel-' + conversation_id);
+            
+            $("#chat_text").prop('disabled', false);
+
+            $("#content").empty();
+
+
+            $.post('/myChat', {'contact_clicked' : contact_clicked}, function() {
+              $('#chat_text').val('');
+            
+            });
+
+            
+            pusher.bind('old_messages', function(data) {
+
+              for(var i = 0; i < data.lenMsg; i++){
+                if (data.account[i] == active_account){
+                message_user = `<div class="outgoing_msg">
+                                    <div class="sent_msg">
+                                      <p>${data.messages[i]}</p>
+                                      <span class="time_date">${data.time[i]}</span></div>
+                              </div>`;
+                $('#content').append(message_user);
+                }
+                else{
+                  message_contact = `<div class="incoming_msg">
+                                      <div class="received_msg">
+                                        <div class="received_withd_msg">
+                                          <p>${data.messages[i]}</p>
+                                          <span class="time_date">${data.time[i]}</span></div>
+                                      </div>
+                                  </div>`;
+                  $('#content').append(message_contact);
+                  
+                }            
+              }
+              
+              $("#content").scrollTop($("#content")[0].scrollHeight);
+                
+              pusher.unbind('old_messages');
+              }); 
+            
+              
+          });
+          
+          
+
+          $('.chat_list').hover (function(){
+              $(this).addClass("active_chat up");
+              }, function(){
+              $(this).removeClass("active_chat up");
+            });
+
+            
+          $('#chat_btn').on('click', function() {
+                
+                
+              let message = $('#chat_text').val();
+              let contact_clicked = $('.clicked_active_chat').attr('id');
+              let conversation_id = $('.clicked_active_chat').attr('name');
+              
+              if(message.trim() != ""){
+                $.post('/chat_message', {'contact_clicked' : contact_clicked ,'message' : message, 'time' : time, 'account' : active_account}, function() {
+                  $('#chat_text').val('');
+                });
+              }  
+
+                
+
+          });
+
+          var input = document.getElementById("chat_text");
+          input.addEventListener("keyup", function(event) {
+            if (event.keyCode === 13) {
+              event.preventDefault();
+              
+              let message = $('#chat_text').val();
+              let contact_clicked = $('.clicked_active_chat').attr('id');
+              let conversation_id = $('.clicked_active_chat').attr('name');
+              
+              if(message.trim() != ""){
+                $.post('/chat_message', {'contact_clicked' : contact_clicked ,'message' : message, 'time' : time, 'account' : active_account}, function() {
+                  $('#chat_text').val('');
+                });
+              }  
+
+            }
+          });
+
+
+          pusher.bind('message', function(data) {
+                
+                let message = data.message;
+                let time = data.time;
+                let active = data.active_account;
+                let conversation_id = data.conversation_id;
+                var clicked_ac_name = $('.clicked_active_chat').attr('name');
+
+                console.log(conversation_id)
+                console.log(clicked_ac_name)
+                if (clicked_ac_name == conversation_id) {
+                  if (active == active_account) {
+                  message_user = `<div class="outgoing_msg">
+                                      <div class="sent_msg">
+                                        <p>${data.message}</p>
+                                        <span class="time_date">${data.time}</span></div>
+                                </div>`;
+                  $('#content').append(message_user);
+                  }
+                  else{
+                    message_contact = `<div class="incoming_msg">
+                                        <div class="received_msg">
+                                          <div class="received_withd_msg">
+                                            <p>${data.message}</p>
+                                            <span class="time_date">${data.time}</span></div>
+                                        </div>
+                                    </div>`;
+                    $('#content').append(message_contact);
+                    
+                  }
+                }
+                
+                channel = pusher.subscribe('chat-channel-' + conversation_id);
+               
+                $("#p" + conversation_id).text(message);
+                $("#h" + conversation_id).text(time);
+
+                $("#content").scrollTop($("#content")[0].scrollHeight);
+
+                
+  
+            });
+
+
+            function mySearch() {
+              // Declare variables
+              var input, filter, ul, li, a, i, txtValue;
+              input = document.getElementById('search-id');
+              filter = input.value.toUpperCase();
+              ul = document.getElementById("myUL");
+              li = ul.getElementsByTagName('li');
+
+              // Loop through all list items, and hide those who don't match the search query
+              for (i = 0; i < li.length; i++) {
+                h_seis = li[i].getElementsByTagName("h6")[0];
+                txtValue = h_seis.textContent || h_seis.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                  li[i].style.display = "";
+                } else {
+                  li[i].style.display = "none";
+                }
+              }
+            }
+
+
+
+
+    </script>
+    </div>  
+{% endblock %}

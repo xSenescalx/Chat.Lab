@@ -1,0 +1,73 @@
+{% extends "layoutOff.html" %}
+
+{% block title %}
+    Account
+{% endblock %}
+
+{% block main %}
+<div class="page-flex-container">
+    <div>    
+        <div class="content-section">
+            <div class="flex-container">
+                <div>
+                        <img class="rounded-circle account-img" src="{{image_file}}">
+                </div>        
+                <div>
+                    <h2 style="font-size: 7vmin;">{{ session.user_name }}</h2>
+                    <p style="font-size: 80%">{{ session.user_email }} // ID: {{ session.user_random_number}}</p>
+                </div>
+
+            </div>
+            <h5 style="font-size: 120%; margin-bottom: 1%;">Account Details</h5>
+            <hr style="margin-top: 0%;">
+            
+            
+            <form action="/account" method="post" enctype="multipart/form-data">
+
+                <p style="font-size: small; margin-bottom: 1%;">Account</p>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" readonly name="account" id="floatingUsername" placeholder="account" value="{{session.user_account}}">
+                </div>
+                
+                <p style="font-size: small; margin-bottom: 1%;">Change Username</p>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" name="username" id="floatingUsername" placeholder="username" value="{{session.user_name}}" maxlength="15">
+                </div>
+
+                <p style="font-size: small; margin-bottom: 1%;">Change Image</p>
+                <div style="margin-bottom: 5%;">
+                    <input type="file" class="form-control" name="profilePic" id="floatingInput" accept="image/*" value="{{session.user_image}}">
+                </div>
+
+                <div class="mx-auto" style="text-align: center;">
+                    <button type="submit" class="info_contact_me" style="width: 120px;">Update!</button>
+                </div>
+                    
+            </form>
+            
+
+        </div>
+    </div>
+    <div>
+        <div class="content-section-two">
+            
+                
+                    
+                    <h5 style="font-size: 120%; margin-bottom: 1%;">Security Configuration</h5>
+                    <hr style="margin-top: 0%;">
+                    
+                    <div style="margin-bottom: 15px;">
+                        <a class="info_contact_me" href="changePassword" >Change your Passsword!</a>
+                    </div>
+                    <div style="align-content: center;"> 
+                        <a class="info_contact_me" href="delete" >Delete Account</a>
+                    </div>
+    
+                  
+                        
+                
+
+        </div>
+    </div>            
+</div>
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends "layoutOff.html" %}
+
+{% block title %}
+    Delete Account
+{% endblock %}
+
+{% block main %}
+<h1 class="mx-auto" id="contact_brillo" style="text-align: center; margin-top: 2rem;">Delete Account</h1>
+<form action="/delete" method="post">
+    <div class="container_forms">
+        <div id="color_label1" class="form-floating mb-3">
+            <input  style="background-color: rgba(255, 255, 255, 0.219);" type="text"  class="form-control" name="account" id="floatingUsername" placeholder="account" required="true"/>
+            <label for="floatingUsername">Account</label>
+        </div>
+        <div id="color_label2" class="form-floating">
+            <input style="background-color: rgba(255, 255, 255, 0.219);" type="password" class="form-control" name="password" id="floatingPassword" placeholder="password" minlength="8">
+            <label  for="floatingPassword">Password</label>
+        </div>
+
+        <button type="submit" id="contact_brillo1" class="info_contact_me" style="margin-top: 2rem;">
+            Delete Account
+        </button>
+    </div>
+</form>
+    <div style="text-align: center;"> 
+        <a class="info_contact_me" href="account">Go Back</a>
+    </div>
+{% endblock %}
+

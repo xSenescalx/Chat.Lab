@@ -1,0 +1,26 @@
+{% extends "layoutOff.html" %}
+
+{% block title %}
+    Add Contact
+{% endblock %}
+
+{% block main %}
+
+<h1 class="mx-auto" id="contact_brillo" style="text-align: center; margin-top: 2rem;">Add Contact!</h1>
+    <form action="/addContact" method="post">
+        <div class="container_forms">
+            <div id="color_label1" class="form-floating mb-3">
+                <input  style="background-color: rgba(255, 255, 255, 0.219);" type="text"  class="form-control" name="account" id="Contact Account Name!" placeholder="Contact Account Name!" required="true"/>
+                <label for="floatingUsername">Contact Account Name!</label>
+            </div>
+            <div id="color_label2" class="form-floating">
+                <input style="background-color: rgba(255, 255, 255, 0.219);" type="number" class="form-control" name="contactId" id="floatingPassword" placeholder="Contact Id" minlength="8">
+                <label  for="floatingPassword">Contact Id</label>
+            </div>
+
+            <button type="submit" id="contact_brillo1" class="info_contact_me" style="margin-top: 2rem;">
+                Add New Contact!<i style="margin-left: .5rem;" class="far fa-user"></i>
+            </button>
+        </div>
+    </form>
+{% endblock %}

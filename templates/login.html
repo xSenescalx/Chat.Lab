@@ -1,0 +1,49 @@
+{% extends "layoutOff.html" %}
+
+{% block title %}
+    Log In
+{% endblock %}
+
+{% block main %}
+
+    <h1 class="mx-auto" id="contact_brillo" style="text-align: center; margin-top: 2rem;">Log In!</h1>
+    <form action="/login" method="post">
+        <div class="container_forms">
+            <div id="color_label1" class="form-floating mb-3">
+                <input  style="background-color: rgba(255, 255, 255, 0.219);" type="text"  class="form-control" name="account" id="floatingUsername" placeholder="account" required="true"/>
+                <label for="floatingUsername">Account</label>
+            </div>
+            <div id="color_label2" class="form-floating">
+                <input style="background-color: rgba(255, 255, 255, 0.219);" type="password" class="form-control" name="password" id="floatingPassword" placeholder="password" minlength="8">
+                <label  for="floatingPassword">Password</label>
+            </div>
+
+            <button type="submit" id="contact_brillo1" class="info_contact_me" style="margin-top: 2rem;">
+                Log In <i class="far fa-paper-plane info_button"></i>
+            </button>
+        </div>
+    </form>
+
+    <script>
+
+        function chatlab_brillo_roto() {
+        var element_info = document.getElementById("contact_brillo");
+        element_info.classList.toggle("chatlab_brillo_roto");
+
+        var element_info = document.getElementById("contact_brillo1");
+        element_info.classList.toggle("chatlab_brillo_roto");
+
+        }
+
+        function color_label() {
+        var element_info = document.getElementById("color_label1");
+        element_info.classList.toggle("color_label");
+
+        var element_info = document.getElementById("color_label2");
+        element_info.classList.toggle("color_label");
+    }
+
+    </script>
+{% endblock %}
+
+    
