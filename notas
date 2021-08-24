@@ -1,16 +1,12 @@
-account
--pasar todo lo de profile a account
--agregar account name (sin permitir cambios) arriba del username change
--completar security details
--cambiar el change email por change profile pic
+Chat.Lab
 
+-Toda la informacion privada de las conecciones fue tapada con "***" por seguridad.
+-App en proceso, todavia faltan corregir algunos errores menores, pero su gran mayoria ya estan corregidos!
+-Funciona con Ngrok para verla online y compartirla con amigos.
+-Probé subirla a heroku pero no hace la conexion con la base de datos "phpmyadmin". Actualmente estoy buscando la manera de hacerla correr en esa plataforma.
+-Cuando este 100% finalizada comenzaré a comentar todo el codigo para facilitar la comprension del codigo para los demas programadores.
+-Agradezco cualquier recomendación/tip que me puedan dar para seguir mejorando!
 
-profile
--mostrar username/imagen/
--agregar contador de cant de amigos/grupos/comentarios/likes_comentarios 
+Cualquier cosa pueden mandarme un mail a ~ ~ daniroffo125@gmail.com ~ ~
 
-
-
-
-
-NO SE GUARDA EL NOMBRE EN LA BASE DE DATOS
+Espero que les guste!!!

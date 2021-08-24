@@ -24,7 +24,8 @@
             </div>
             <div class="col-3">
                 
-                <img class="blop" src="static\blop.jpg" alt="" width="80%" style="min-width: 150px;">
+                <img id="blop" class="blop" src="static\danitransparente.jpg" alt="" width="80%" style="min-width: 150px;">
+                <img src="static\danicolor.jpg" hidden>
                 
             </div>
             <div class="col-4">
@@ -179,6 +180,18 @@
         
         var element_brillo = document.getElementById("brillo_about_me");
         element_brillo.classList.toggle("fondo_trasparente_about_me_darkmode");
+    }
+
+    function blop() {
+
+        var img = document.getElementById('blop').src;
+        if (img.indexOf('danitransparente.jpg')!=-1) {
+            document.getElementById('blop').src  = 'static/danicolor.jpg';
+        }
+         else {
+           document.getElementById('blop').src = 'static/danitransparente.jpg';
+        }
+
     }
 
 </script>

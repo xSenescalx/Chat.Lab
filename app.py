@@ -40,10 +40,10 @@ if __name__ == '__main__':
 # Pusher
 
 pusher_client = pusher.Pusher(
-  app_id='1237593',
-  key='eae3df9de1df6d4b8c82',
-  secret='668684af6ae5bad88300',
-  cluster='us2',
+  app_id='**********',
+  key='***************',
+  secret='*****************',
+  cluster='****************',
   ssl=True
 )
 
@@ -53,10 +53,10 @@ pusher_client = pusher.Pusher(
 
 mail = Mail(app)
 
-app.config["MAIL_SERVER"] = 'smtp.gmail.com'
+app.config["MAIL_SERVER"] = '***********.******.***'
 app.config["MAIL_PORT"] = 465
-app.config["MAIL_USERNAME"] = 'pruebasflask@gmail.com'
-app.config["MAIL_PASSWORD"] = 'wersdfxcv'
+app.config["MAIL_USERNAME"] = '*******@******.***'
+app.config["MAIL_PASSWORD"] = '**********'
 app.config["MAIL_USE_TLS"] = False
 app.config["MAIL_USE_SSL"] = True
 
@@ -66,22 +66,22 @@ mail = Mail(app)
 otp = randint(000000,999999)
 
 # secret key es necesario para trabajar con sesiones, la contraseña puede ser cualquiera
-app.secret_key = 'danidani'
+app.secret_key = '**************'
 
 # Configure session to use filesystem (instead of signed cookies)
-app.config["SESSION_FILE_DIR"] = mkdtemp()
+app.config["SESSION_FILE_DIR"] = '************'()
 app.config["SESSION_PERMANENT"] = False
-app.config["SESSION_TYPE"] = "filesystem"
+app.config["SESSION_TYPE"] = "*********"
 Session(app)
 
 
 # Configuracion basica para poder usar la base de datos, la info te la mandan por mail desde esta pag: https://www.freemysqlhosting.net/
 
 
-app.config['MYSEQL_USER'] = 'dani'
-app.config['MYSEQL_PASSWORD'] = '3a9761pa'
-app.config['MYSEQL_HOST'] = 'localhost'
-app.config['MYSQL_DB'] = 'chatapp'
+app.config['MYSEQL_USER'] = '**********'
+app.config['MYSEQL_PASSWORD'] = '********'
+app.config['MYSEQL_HOST'] = '**************'
+app.config['MYSQL_DB'] = '********'
 
 mysql = MySQL(app)   
         
@@ -99,7 +99,7 @@ def info():
         sender_email = request.form['email']
         sender_proyect = request.form['proyect']
         sender_message = request.form['message']
-        my_email = 'daniroffo125@gmail.com'
+        my_email = '****@******.****'
         
 
         msg = Message(subject = sender_name + ' ' + sender_email + ':' + ' ' + sender_proyect, sender = sender_email, recipients= my_email.split() )
@@ -436,7 +436,7 @@ def register():
 
 
         # Toma los datos del nuevo usuario y manda un email al usuario.
-        msg = Message(subject = 'App Security Code', sender = 'pruebasflask@gmail.com', recipients =[email])
+        msg = Message(subject = 'App Security Code', sender = '*********@*********.*****', recipients =[email])
         msg.body = str(otp)
         mail.send(msg)   
         cur.execute("DELETE FROM preregister")
@@ -551,7 +551,7 @@ def changePassword():
         print(session.get("user_email"))
 
         # Toma los datos del nuevo usuario y manda un email al usuario.
-        msg = Message(subject = 'App Security Code', sender = 'pruebasflask@gmail.com', recipients = [session.get("user_email")])
+        msg = Message(subject = 'App Security Code', sender = '*****@******.****', recipients = [session.get("user_email")])
         msg.body = str(otp)
         mail.send(msg)   
         cur.execute("DELETE FROM preregister")
